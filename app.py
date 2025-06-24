@@ -122,10 +122,37 @@ if not df.empty:
             fig_line.update_layout(xaxis_title='Tanggal', yaxis_title='Total Pengeluaran (Rp)')
             st.plotly_chart(fig_line, use_container_width=True)
 
-    # --- MENAMPILKAN DATA MENTAH ---
+    # --- MENAMPILKAN DATA MENTAH DENGAN FITUR HAPUS ---
     st.markdown("---")
     st.subheader("📖 Semua Data Pengeluaran")
-    st.dataframe(df.sort_values(by="Tanggal", ascending=False), use_container_width=True)
+    
+    # Buat DataFrame dengan indeks untuk memudahkan penghapusan
+    df_display = df.copy()
+    df_display.insert(0, 'ID', range(1, 1 + len(df_display))) # Tambahkan kolom ID
+    
+    st.dataframe(df_display.sort_values(by="Tanggal", ascending=False), use_container_width=True, hide_index=True)
+
+    # Form untuk menghapus data
+    st.markdown("---")
+    st.subheader("🗑️ Hapus Data Pengeluaran")
+    with st.form("form_hapus_pengeluaran"):
+        id_untuk_hapus = st.number_input("Masukkan ID Pengeluaran yang ingin dihapus:", min_value=1, max_value=len(df_display), value=1)
+        tombol_hapus = st.form_submit_button("Hapus Pengeluaran")
+
+        if tombol_hapus:
+            if id_untuk_hapus > 0 and id_untuk_hapus <= len(df_display):
+                # Dapatkan indeks asli dari baris yang akan dihapus berdasarkan ID yang ditampilkan
+                # Karena kita menambahkan 'ID' dari 1, kita perlu menguranginya untuk mendapatkan indeks berbasis 0
+                indeks_untuk_hapus = id_untuk_hapus - 1
+                
+                # Gunakan iloc untuk menghapus baris berdasarkan posisi integer
+                df = df.drop(df.index[indeks_untuk_hapus]).reset_index(drop=True)
+                simpan_data(df)
+                st.success(f"Pengeluaran dengan ID {id_untuk_hapus} berhasil dihapus!")
+                st.rerun()
+            else:
+                st.error("ID tidak valid. Mohon masukkan ID yang benar.")
+
 
     # Menambahkan tombol untuk download data
     csv = df.to_csv(index=False).encode('utf-8')
@@ -139,4 +166,3 @@ if not df.empty:
 else:
     # Tampilkan pesan ini jika tidak ada data sama sekali
     st.info("👋 Selamat datang! Belum ada data pengeluaran. Silakan tambahkan pengeluaran baru melalui form di sidebar kiri untuk memulai.")
-    
