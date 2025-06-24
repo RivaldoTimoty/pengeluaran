@@ -139,3 +139,4 @@ if not df.empty:
 else:
     # Tampilkan pesan ini jika tidak ada data sama sekali
     st.info("👋 Selamat datang! Belum ada data pengeluaran. Silakan tambahkan pengeluaran baru melalui form di sidebar kiri untuk memulai.")
+    
