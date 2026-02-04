@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description"
+        content="Rivaldo Timoty - Data Scientist & Analyst specializing in predictive modeling, machine learning, and data visualization. Portfolio showcasing projects and experience.">
+    <meta name="keywords" content="data scientist, data analyst, machine learning, python, R, SQL, tableau, portfolio">
+    <title>Rivaldo Timoty - Data Scientist Portfolio</title>
+
+    <!-- Preconnect for external resources -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563EB", // Blue-600
+                        secondary: "#1E40AF", // Blue-800
+                        "background-light": "#F9FAFB", // Gray-50
+                        "background-dark": "#0F172A", // Slate-900
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1E293B", // Slate-800
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                },
+            },
+        };
+    </script>
+
+    <!-- Inline Critical CSS -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Blob background effect */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* Smooth transitions for dark mode */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2563EB;
+            border-radius: 5px;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #1E293B;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #1E40AF;
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            border-top-color: #2563EB;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed w-full z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">R
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white">Rivaldo Timoty</span>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition nav-link"
+                        href="#about">About</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition nav-link"
+                        href="#skills">Skills</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition nav-link"
+                        href="#experience">Experience</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition nav-link"
+                        href="#certifications">Certifications</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition nav-link"
+                        href="#projects">Projects</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition nav-link"
+                        href="#contact">Contact</a>
+                </div>
+
+                <!-- Right Side Actions -->
+                <div class="flex items-center gap-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="darkModeToggle"
+                        class="dark-mode-toggle p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+                        aria-label="Toggle dark mode">
+                        <span class="material-icons-outlined">dark_mode</span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuButton"
+                        class="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span class="material-icons-outlined">menu</span>
+                    </button>
+
+                    <!-- Download CV Button -->
+                    <a class="hidden md:inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-secondary transition-all shadow-lg shadow-primary/30 download-cv-btn"
+                        href="assets/documents/cv.pdf" download="Rivaldo_Timoty_CV.pdf">
+                        Download CV
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobileMenu" class="md:hidden hidden py-4 border-t border-gray-200 dark:border-gray-800">
+                <div class="flex flex-col space-y-4">
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition py-2 nav-link"
+                        href="#about">About</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition py-2 nav-link"
+                        href="#skills">Skills</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition py-2 nav-link"
+                        href="#experience">Experience</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition py-2 nav-link"
+                        href="#certifications">Certifications</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition py-2 nav-link"
+                        href="#projects">Projects</a>
+                    <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition py-2 nav-link"
+                        href="#contact">Contact</a>
+                    <a class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-secondary transition-all shadow-lg shadow-primary/30 mt-2"
+                        href="assets/documents/cv.pdf" download="Rivaldo_Timoty_CV.pdf">
+                        Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-secondary transition-all opacity-0 pointer-events-none z-40">
+        <span class="material-icons-outlined">arrow_upward</span>
+    </button>
+
+    <!-- Header/Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Blobs -->
+        <div
+            class="blob bg-blue-300 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 dark:bg-blue-900 animate-float">
+        </div>
+        <div class="blob bg-purple-300 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3 dark:bg-purple-900 animate-float"
+            style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column: Text Content -->
+                <div class="text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse-slow"></span>
+                        Available for New Opportunities
+                    </div>
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
+                        Turning Data into <br />
+                        <span class="text-primary relative">
+                            Decisions
+                            <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full"></span>
+                        </span>
+                    </h1>
+
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        Hi, I'm Rivaldo Timoty. A Data Scientist & Analyst specializing in predictive modeling, machine
+                        learning, and advanced visualization to drive business growth.
+                    </p>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a class="px-7 py-3.5 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transform hover:-translate-y-1"
+                            href="#projects">
+                            View Projects
+                        </a>
+                        <a class="px-7 py-3.5 bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-700 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition transform hover:-translate-y-1"
+                            href="#contact">
+                            Hire Me
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div
+                        class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gray-500 dark:text-gray-400 font-medium">
+                        <span class="flex items-center gap-2">
+                            <span class="material-icons-outlined text-lg text-primary">school</span>
+                            Statistics @ ITS
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <span class="material-icons-outlined text-lg text-primary">business</span>
+                            PT Stellar Data
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right Column: Profile Image -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
+                        <!-- Profile Image Container -->
+                        <div
+                            class="absolute inset-0 rounded-full border-4 border-white dark:border-surface-dark shadow-2xl overflow-hidden bg-gray-200 dark:bg-gray-700">
+                            <!-- Placeholder Image - Replace with your actual image -->
+                            <div
+                                class="w-full h-full bg-gradient-to-br from-primary/20 to-purple-600/20 flex items-center justify-center">
+                                <span class="text-6xl font-bold text-primary">RT</span>
+                            </div>
+                            <!-- If you have an actual image, use this instead:
+                            <img alt="Rivaldo Timoty Portrait" class="w-full h-full object-cover" src="assets/images/profile.jpg"/>
+                            -->
+                        </div>
+
+                        <!-- Experience Badge -->
+                        <div
+                            class="absolute top-4 -left-2 sm:top-10 sm:-left-4 lg:left-0 bg-white dark:bg-surface-dark p-3 rounded-xl shadow-xl flex items-center gap-3 animate-bounce-slow">
+                            <div
+                                class="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg text-green-600 dark:text-green-400">
+                                <span class="material-icons-outlined">insights</span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Experience</p>
+                                <p class="text-sm font-bold text-gray-900 dark:text-white">4+ Years</p>
+                            </div>
+                        </div>
+
+                        <!-- Projects Badge -->
+                        <div
+                            class="absolute bottom-4 -right-2 sm:bottom-10 sm:-right-4 lg:right-4 bg-white dark:bg-surface-dark p-3 rounded-xl shadow-xl flex items-center gap-3">
+                            <div
+                                class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
+                                <span class="material-icons-outlined">folder_special</span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Projects</p>
+                                <p class="text-sm font-bold text-gray-900 dark:text-white">30+ Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white dark:bg-surface-dark" id="about">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
+            <div class="w-20 h-1 bg-primary rounded-full mx-auto mb-8"></div>
+            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                I am a Data Scientist with a strong academic background in <span
+                    class="text-primary font-semibold">Statistics from ITS</span>. Currently working at <span
+                    class="font-semibold text-gray-900 dark:text-white">PT Stellar Data Constellation</span>, I
+                specialize in transforming raw, unstructured data into actionable business insights.
+            </p>
+            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                My expertise lies in building predictive models, designing efficient data pipelines, and creating
+                intuitive visualizations that empower stakeholders to make data-driven decisions confidently.
+            </p>
+
+            <!-- Personal Stats -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">40+</div>
+                    <div class="text-gray-600 dark:text-gray-400">Dashboards Built</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">15%</div>
+                    <div class="text-gray-600 dark:text-gray-400">Churn Reduction</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">20%</div>
+                    <div class="text-gray-600 dark:text-gray-400">Process Optimization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-background-light dark:bg-background-dark" id="skills">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Skills & Tools</h2>
+                <div class="w-20 h-1 bg-primary rounded-full mx-auto mb-4"></div>
+                <p class="text-gray-600 dark:text-gray-400">My technical stack for data analysis and machine learning.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill Card 1 -->
+                <div
+                    class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-primary/50 transform hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-lg flex items-center justify-center text-primary mb-4">
+                        <span class="material-icons-outlined text-2xl">code</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Python & R</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Statistical Analysis & Scripting</p>
+                    <div class="flex gap-1">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div
+                    class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-orange-500/50 transform hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-orange-50 dark:bg-orange-900/20 rounded-lg flex items-center justify-center text-orange-500 mb-4">
+                        <span class="material-icons-outlined text-2xl">storage</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">SQL</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Data Querying & Management</p>
+                    <div class="flex gap-1">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-orange-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div
+                    class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-purple-500/50 transform hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-purple-50 dark:bg-purple-900/20 rounded-lg flex items-center justify-center text-purple-500 mb-4">
+                        <span class="material-icons-outlined text-2xl">analytics</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Tableau</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Business Intelligence Dashboarding</p>
+                    <div class="flex gap-1">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-purple-500 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 4 -->
+                <div
+                    class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-teal-500/50 transform hover:-translate-y-1">
+                    <div
+                        class="w-12 h-12 bg-teal-50 dark:bg-teal-900/20 rounded-lg flex items-center justify-center text-teal-500 mb-4">
+                        <span class="material-icons-outlined text-2xl">psychology</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Machine Learning</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Scikit-Learn, TensorFlow</p>
+                    <div class="flex gap-1">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-teal-500 h-2 rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Skills -->
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">Additional Skills</h3>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span
+                        class="px-4 py-2 bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700 text-sm">Data
+                        Visualization</span>
+                    <span
+                        class="px-4 py-2 bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700 text-sm">ETL
+                        Pipelines</span>
+                    <span
+                        class="px-4 py-2 bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700 text-sm">Big
+                        Data</span>
+                    <span
+                        class="px-4 py-2 bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700 text-sm">A/B
+                        Testing</span>
+                    <span
+                        class="px-4 py-2 bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700 text-sm">Cloud
+                        Computing</span>
+                    <span
+                        class="px-4 py-2 bg-white dark:bg-surface-dark text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700 text-sm">Git
+                        & Version Control</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-white dark:bg-surface-dark" id="experience">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2 text-center">Professional Experience
+                </h2>
+                <div class="w-20 h-1 bg-primary rounded-full mx-auto mb-4"></div>
+                <p class="text-gray-600 dark:text-gray-400 text-center">My professional journey and contributions in the
+                    data field.</p>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div
+                    class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200 dark:bg-gray-700">
+                </div>
+
+                <!-- Experience Item 1 -->
+                <div class="relative mb-12 lg:mb-0 lg:flex lg:items-center lg:gap-12">
+                    <div class="lg:w-1/2 lg:text-right lg:pr-12 mb-6 lg:mb-0">
+                        <div
+                            class="bg-background-light dark:bg-background-dark p-8 rounded-2xl border border-gray-100 dark:border-gray-700 relative">
+                            <div
+                                class="absolute top-8 right-8 bg-blue-100 dark:bg-blue-900/30 text-primary text-xs font-bold px-3 py-1 rounded-full">
+                                Present</div>
+                            <div
+                                class="w-12 h-12 bg-white dark:bg-surface-dark rounded-xl flex items-center justify-center shadow-sm mb-6 text-primary text-2xl">
+                                <span class="material-icons-outlined">work</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Data Scientist</h3>
+                            <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-4">PT Stellar Data
+                                Constellation</p>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide mb-6 flex items-center gap-2">
+                                <span class="material-icons-outlined text-sm">calendar_today</span> Jan 2023 - Present
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-300 list-disc pl-4">
+                                <li>Developed 40+ interactive dashboards for executive stakeholders, improving data
+                                    accessibility</li>
+                                <li>Implemented sentiment analysis models, driving a 15% improvement in support
+                                    strategies</li>
+                                <li>Optimized ETL pipelines reducing data processing time by 20%</li>
+                                <li>Collaborated with cross-functional teams to define KPIs and success metrics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Dot for Desktop -->
+                    <div
+                        class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-white dark:border-surface-dark">
+                    </div>
+
+                    <!-- Date for Desktop -->
+                    <div class="hidden lg:block lg:w-1/2 lg:pl-12">
+                        <div class="text-2xl font-bold text-primary mb-2">2023 - Present</div>
+                        <p class="text-gray-600 dark:text-gray-400">Full-time position</p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="relative mb-12 lg:mb-0 lg:flex lg:flex-row-reverse lg:items-center lg:gap-12">
+                    <div class="lg:w-1/2 lg:pl-12 mb-6 lg:mb-0">
+                        <div
+                            class="bg-background-light dark:bg-background-dark p-8 rounded-2xl border border-gray-100 dark:border-gray-700">
+                            <div
+                                class="w-12 h-12 bg-white dark:bg-surface-dark rounded-xl flex items-center justify-center shadow-sm mb-6 text-orange-500 text-2xl">
+                                <span class="material-icons-outlined">trending_up</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Data Analyst Intern</h3>
+                            <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-4">Global Tech Solutions
+                            </p>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide mb-6 flex items-center gap-2">
+                                <span class="material-icons-outlined text-sm">calendar_today</span> Jun 2022 - Dec 2022
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-300 list-disc pl-4">
+                                <li>Built 15+ automated reporting dashboards using Python, saving 10+ hours of manual
+                                    work</li>
+                                <li>Automated data active reporting using Python, cleaning various data streams</li>
+                                <li>Improved data accuracy by 20% through data cleaning initiatives</li>
+                                <li>Assisted in developing predictive models for customer segmentation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Dot for Desktop -->
+                    <div
+                        class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-white dark:border-surface-dark">
+                    </div>
+
+                    <!-- Date for Desktop -->
+                    <div class="hidden lg:block lg:w-1/2 lg:text-right lg:pr-12">
+                        <div class="text-2xl font-bold text-primary mb-2">2022</div>
+                        <p class="text-gray-600 dark:text-gray-400">6-month internship</p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="relative lg:flex lg:items-center lg:gap-12">
+                    <div class="lg:w-1/2 lg:text-right lg:pr-12">
+                        <div
+                            class="bg-background-light dark:bg-background-dark p-8 rounded-2xl border border-gray-100 dark:border-gray-700">
+                            <div
+                                class="w-12 h-12 bg-white dark:bg-surface-dark rounded-xl flex items-center justify-center shadow-sm mb-6 text-purple-500 text-2xl">
+                                <span class="material-icons-outlined">school</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Teaching Assistant</h3>
+                            <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-4">Institut Teknologi
+                                Sepuluh Nopember</p>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide mb-6 flex items-center gap-2">
+                                <span class="material-icons-outlined text-sm">calendar_today</span> Aug 2021 - May 2022
+                            </p>
+                            <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-300 list-disc pl-4">
+                                <li>Mentored 100+ students in R and Python for advanced statistical modeling</li>
+                                <li>Conducted labs with students in R and Python for advanced statistical computing</li>
+                                <li>Designed curriculum for advanced statistical modeling and data mining</li>
+                                <li>Provided one-on-one tutoring for struggling students</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Dot for Desktop -->
+                    <div
+                        class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-white dark:border-surface-dark">
+                    </div>
+
+                    <!-- Date for Desktop -->
+                    <div class="hidden lg:block lg:w-1/2 lg:pl-12">
+                        <div class="text-2xl font-bold text-primary mb-2">2021 - 2022</div>
+                        <p class="text-gray-600 dark:text-gray-400">Part-time position</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20 bg-background-light dark:bg-background-dark" id="certifications">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2 text-center">Certifications & Awards
+                </h2>
+                <div class="w-20 h-1 bg-primary rounded-full mx-auto mb-4"></div>
+                <p class="text-gray-600 dark:text-gray-400 text-center">Professional validations of my skills and
+                    achievements.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certification 1 -->
+                <div
+                    class="bg-white dark:bg-surface-dark p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center shadow-sm mb-6 text-blue-600">
+                        <span class="material-icons-outlined text-3xl">verified</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Google Data Analytics</h3>
+                    <p class="text-sm font-medium text-primary mb-4">Professional Certificate</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                        Comprehensive curriculum covering data cleaning, analysis, visualization, and R programming.
+                    </p>
+                    <div class="text-xs text-gray-400 flex items-center gap-1">
+                        <span class="material-icons-outlined text-sm">date_range</span>
+                        Issued: March 2022
+                    </div>
+                </div>
+
+                <!-- Certification 2 -->
+                <div
+                    class="bg-white dark:bg-surface-dark p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-purple-50 dark:bg-purple-900/20 rounded-xl flex items-center justify-center shadow-sm mb-6 text-purple-600">
+                        <span class="material-icons-outlined text-3xl">insert_chart</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Tableau Desktop Specialist</h3>
+                    <p class="text-sm font-medium text-purple-600 mb-4">Professional Certification</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                        Demonstrated proficiency in building interactive dashboards and connecting various data sources.
+                    </p>
+                    <div class="text-xs text-gray-400 flex items-center gap-1">
+                        <span class="material-icons-outlined text-sm">date_range</span>
+                        Issued: January 2023
+                    </div>
+                </div>
+
+                <!-- Certification 3 -->
+                <div
+                    class="bg-white dark:bg-surface-dark p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl flex items-center justify-center shadow-sm mb-6 text-yellow-600">
+                        <span class="material-icons-outlined text-3xl">emoji_events</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Best Graduate Award</h3>
+                    <p class="text-sm font-medium text-yellow-600 mb-4">GPA 3.51</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                        Awarded for academic excellence and outstanding final year thesis project in Statistics.
+                    </p>
+                    <div class="text-xs text-gray-400 flex items-center gap-1">
+                        <span class="material-icons-outlined text-sm">date_range</span>
+                        Awarded: July 2022
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Certifications Button -->
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="inline-flex items-center gap-2 px-6 py-3 text-primary font-semibold border border-primary rounded-lg hover:bg-primary hover:text-white transition-colors duration-300">
+                    View All Certifications
+                    <span class="material-icons-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-20 bg-white dark:bg-surface-dark" id="projects">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Featured Projects</h2>
+                    <div class="w-20 h-1 bg-primary rounded-full mb-4"></div>
+                    <p class="text-gray-600 dark:text-gray-400">A selection of my recent work in predictive analytics
+                        and visualization.</p>
+                </div>
+                <a class="text-primary font-semibold flex items-center gap-1 hover:underline"
+                    href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                    View GitHub <span class="material-icons-outlined text-sm">north_east</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div
+                    class="group bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="material-icons-outlined text-white text-6xl opacity-50">analytics</span>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/20 backdrop-blur-md text-white text-xs px-2 py-1 rounded">
+                            Python</div>
+                        <div class="absolute top-4 right-4">
+                            <span class="material-icons-outlined text-white/70 text-sm">favorite_border</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Customer Churn Prediction</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
+                            Developed a predictive model using XGBoost to identify at-risk customers with 82% accuracy,
+                            helping reduce churn by 15% in Q3.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full">Machine
+                                Learning</span>
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">Python</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs rounded-full">Scikit-learn</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-4">
+                            <div class="flex gap-2">
+                                <span class="material-icons-outlined text-gray-400 text-lg">code</span>
+                                <span class="material-icons-outlined text-gray-400 text-lg">analytics</span>
+                            </div>
+                            <a class="text-sm font-semibold text-primary flex items-center gap-1 group-hover:gap-2 transition-all"
+                                href="#">
+                                View Case Study <span class="material-icons-outlined text-xs">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="group bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-orange-500 to-red-600 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="material-icons-outlined text-white text-6xl opacity-50">dashboard</span>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/20 backdrop-blur-md text-white text-xs px-2 py-1 rounded">
+                            Tableau</div>
+                        <div class="absolute top-4 right-4">
+                            <span class="material-icons-outlined text-white/70 text-sm">favorite_border</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Sales Performance Dashboard
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
+                            Interactive Tableau dashboard integrating real-time sales data across 4 regions. Automated
+                            reporting reduced manual work by 12 hours/week.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs rounded-full">Data
+                                Visualization</span>
+                            <span
+                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded-full">Tableau</span>
+                            <span
+                                class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs rounded-full">Business
+                                Intelligence</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-4">
+                            <div class="flex gap-2">
+                                <span class="material-icons-outlined text-gray-400 text-lg">dashboard</span>
+                                <span class="material-icons-outlined text-gray-400 text-lg">visibility</span>
+                            </div>
+                            <a class="text-sm font-semibold text-primary flex items-center gap-1 group-hover:gap-2 transition-all"
+                                href="#">
+                                View Case Study <span class="material-icons-outlined text-xs">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="group bg-background-light dark:bg-background-dark rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-teal-600 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="material-icons-outlined text-white text-6xl opacity-50">shopping_cart</span>
+                        </div>
+                        <div
+                            class="absolute top-4 left-4 bg-white/20 backdrop-blur-md text-white text-xs px-2 py-1 rounded">
+                            R Language</div>
+                        <div class="absolute top-4 right-4">
+                            <span class="material-icons-outlined text-white/70 text-sm">favorite_border</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Market Basket Analysis</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
+                            Utilized Apriori algorithm to uncover product association rules. Recommendations implemented
+                            in store layout increased cross-selling by 8%.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs rounded-full">R
+                                Programming</span>
+                            <span
+                                class="px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-xs rounded-full">Market
+                                Analysis</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs rounded-full">Association
+                                Rules</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-4">
+                            <div class="flex gap-2">
+                                <span class="material-icons-outlined text-gray-400 text-lg">shopping_cart</span>
+                                <span class="material-icons-outlined text-gray-400 text-lg">functions</span>
+                            </div>
+                            <a class="text-sm font-semibold text-primary flex items-center gap-1 group-hover:gap-2 transition-all"
+                                href="#">
+                                View Case Study <span class="material-icons-outlined text-xs">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Projects Button -->
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40">
+                    View All Projects
+                    <span class="material-icons-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-background-light dark:bg-background-dark" id="contact">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to start a project?</h2>
+            <div class="w-20 h-1 bg-primary rounded-full mx-auto mb-6"></div>
+            <p class="text-gray-600 dark:text-gray-400 mb-10 max-w-lg mx-auto">
+                I'm currently available for freelance work and full-time opportunities. If you have a project that needs
+                some data magic, let's talk.
+            </p>
+
+            <!-- Contact Info Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-gray-100 dark:border-gray-700">
+                    <div
+                        class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center text-primary mx-auto mb-4">
+                        <span class="material-icons-outlined">email</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Email</h3>
+                    <p class="text-gray-600 dark:text-gray-400">rivaldo.timoty@example.com</p>
+                </div>
+
+                <div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-gray-100 dark:border-gray-700">
+                    <div
+                        class="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center text-green-600 mx-auto mb-4">
+                        <span class="material-icons-outlined">phone</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Phone</h3>
+                    <p class="text-gray-600 dark:text-gray-400">+62 812 3456 7890</p>
+                </div>
+
+                <div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-gray-100 dark:border-gray-700">
+                    <div
+                        class="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-full flex items-center justify-center text-purple-600 mx-auto mb-4">
+                        <span class="material-icons-outlined">location_on</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Location</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Surabaya, Indonesia</p>
+                </div>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a class="px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-secondary transition shadow-lg shadow-primary/30 w-full sm:w-auto flex items-center justify-center gap-2"
+                    href="mailto:rivaldo.timoty@example.com">
+                    <span class="material-icons-outlined">email</span>
+                    Contact Me
+                </a>
+                <a class="px-8 py-3 bg-white dark:bg-surface-dark text-gray-700 dark:text-white font-semibold rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition w-full sm:w-auto flex items-center justify-center gap-2"
+                    href="https://linkedin.com/in/rivaldotimoty" target="_blank" rel="noopener noreferrer">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path clip-rule="evenodd"
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a class="px-8 py-3 bg-white dark:bg-surface-dark text-gray-700 dark:text-white font-semibold rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition w-full sm:w-auto flex items-center justify-center gap-2"
+                    href="https://github.com/rivaldotimoty" target="_blank" rel="noopener noreferrer">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path clip-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 py-8">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-white text-xs font-bold">R
+                </div>
+                <span class="font-bold text-gray-900 dark:text-white">Rivaldo Timoty</span>
+            </div>
+
+            <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
+                © <span id="currentYear"></span> Rivaldo Timoty. All rights reserved.
+            </p>
+
+            <div class="flex gap-4">
+                <a class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition"
+                    href="https://github.com/rivaldotimoty" target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub">
+                    <span class="sr-only">GitHub</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path clip-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition"
+                    href="https://linkedin.com/in/rivaldotimoty" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path clip-rule="evenodd"
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Back to top for mobile -->
+        <div class="text-center mt-4 md:hidden">
+            <button id="backToTopMobile" class="text-sm text-primary flex items-center gap-1 mx-auto">
+                <span class="material-icons-outlined text-sm">arrow_upward</span>
+                Back to top
+            </button>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Inline JavaScript for immediate functionality -->
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuButton.querySelector('span');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.textContent = 'menu';
+                } else {
+                    icon.textContent = 'close';
+                }
+            });
+
+            // Close mobile menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.querySelector('span').textContent = 'menu';
+                });
+            });
+        }
+
+        // Back to top functionality
+        const backToTop = document.getElementById('backToTop');
+        const backToTopMobile = document.getElementById('backToTopMobile');
+
+        function toggleBackToTop() {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        if (backToTop) {
+            window.addEventListener('scroll', toggleBackToTop);
+            backToTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        if (backToTopMobile) {
+            backToTopMobile.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Initialize on load
+        toggleBackToTop();
+    </script>
+</body>
+
+</html>

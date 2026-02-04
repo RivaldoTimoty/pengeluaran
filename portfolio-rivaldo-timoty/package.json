@@ -1,0 +1,32 @@
+{
+    "name": "portfolio-rivaldo-timoty",
+    "version": "1.0.0",
+    "description": "Portfolio website for Rivaldo Timoty - Data Scientist",
+    "main": "index.html",
+    "scripts": {
+        "start": "live-server --port=3000",
+        "dev": "live-server --port=3000 --watch=index.html,assets",
+        "build": "node build.js",
+        "optimize": "npm run minify-html && npm run minify-css && npm run minify-js",
+        "minify-html": "html-minifier --input-dir . --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css true --minify-js true",
+        "minify-css": "cleancss -o assets/css/custom.min.css assets/css/custom.css",
+        "minify-js": "terser assets/js/main.js -o assets/js/main.min.js -c -m",
+        "serve": "http-server dist -p 8080",
+        "deploy": "npm run build && echo 'Build completed! Ready for deployment.'"
+    },
+    "keywords": [
+        "portfolio",
+        "data-science",
+        "web-development"
+    ],
+    "author": "Rivaldo Timoty",
+    "license": "MIT",
+    "devDependencies": {
+        "live-server": "^1.2.2",
+        "html-minifier": "^4.0.0",
+        "clean-css-cli": "^5.6.2",
+        "terser": "^5.19.2",
+        "http-server": "^14.1.1"
+    },
+    "dependencies": {}
+}
